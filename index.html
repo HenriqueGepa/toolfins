@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Chosen Palette: Praia Vibes (Baseado no PDF da Toolfins) -->
+    <!-- Application Structure Plan: Uma SPA de rolagem vertical com seções temáticas que constroem uma narrativa de investimento. O fluxo começa com a conexão emocional (A História), valida a necessidade (Problema/Solução), prova a viabilidade (Concorrentes, Vantagem, Validação), demonstra o potencial (Mercado, Finanças, Roadmap), e termina com uma chamada clara para ação (A Oferta). Essa estrutura foi escolhida para guiar o investidor por uma jornada lógica, respondendo a perguntas antes que sejam feitas e construindo confiança a cada etapa. A navegação fixa permite acesso direto a qualquer ponto. -->
+    <!-- Visualization & Content Choices: 
+        - História: Layout de duas colunas para combinar imagem e texto, criando impacto emocional.
+        - Problema/Solução/Vantagem/Validação/Concorrentes: Cards (HTML/CSS) para apresentar informações de forma rápida e digerível.
+        - Mercado: Cards com números grandes para destacar o potencial massivo.
+        - Unit Economics: Blocos de texto estruturados para clareza financeira máxima.
+        - Projeções: Gráfico de barras interativo (Chart.js/Canvas) para visualizar o crescimento de receita e lucro, uma escolha clássica e eficaz para dados financeiros.
+        - Roadmap: Layout de linha do tempo para mostrar a evolução planejada dos produtos.
+        - Oferta: Layout claro com gráfico de pizza visual (CSS) para o uso dos recursos, simplificando a alocação do capital.
+        - Justificativa: A combinação de elementos visuais e textuais foi escolhida para manter o engajamento alto, enquanto o gráfico interativo permite uma análise mais profunda dos dados financeiros, atendendo tanto ao apelo emocional quanto à necessidade de dados concretos de um investidor. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <title>Pitch Interativo - Toolfins</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-primary: #8EE2ED;
+            --color-secondary: #FFB93F;
+            --color-dark: #1F1F1F;
+            --color-dark-accent: #2c2c2c;
+            --color-light: #FFFFFF;
+            --color-text-muted: #a0aec0; /* gray-400 */
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--color-dark);
+            color: var(--color-text-muted);
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 40vh;
+            max-height: 400px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navegação Fixa -->
+    <nav class="sticky top-0 z-50 bg-[var(--color-dark)]/80 backdrop-blur-md shadow-lg shadow-black/20">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center py-2">
+                <a href="#hero" class="text-2xl font-bold text-white">Toolfins</a>
+                <div class="hidden md:flex space-x-6 text-sm font-semibold text-gray-300">
+                    <a href="#story" class="hover:text-[var(--color-primary)] transition">A História</a>
+                    <a href="#solution" class="hover:text-[var(--color-primary)] transition">A Solução</a>
+                    <a href="#market" class="hover:text-[var(--color-primary)] transition">O Mercado</a>
+                    <a href="#financials" class="hover:text-[var(--color-primary)] transition">Finanças</a>
+                    <a href="#ask" class="hover:text-[var(--color-primary)] transition">A Oferta</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <!-- Seção 1: Hero -->
+        <section id="hero" class="h-screen flex items-center justify-center bg-cover bg-center text-center text-white" style="background-image: url('https://images.unsplash.com/photo-1531722569936-825d3dd91b15?q=80&w=2070&auto=format&fit=crop');">
+            <div class="absolute inset-0 bg-black/60"></div>
+            <div class="relative z-10 p-4 flex flex-col md:flex-row items-center justify-center gap-8">
+                <img src="https://i.imgur.com/e8a3V2r.png" alt="Ferramenta Toolfins" class="w-48 md:w-64 drop-shadow-2xl">
+                <div class="md:text-left">
+                    <h1 class="text-5xl md:text-7xl font-bold mb-2">Toolfins</h1>
+                    <p class="text-2xl md:text-3xl font-light">O canivete suíço do surfista.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção 2: A História -->
+        <section id="story" class="py-20 bg-[var(--color-dark-accent)]">
+            <div class="container mx-auto px-4 grid md:grid-cols-2 gap-12 items-center">
+                <div class="flex justify-center">
+                    <!-- Substituir pela foto do Henrique -->
+                    <img src="https://placehold.co/350x450/CCCCCC/FFFFFF?text=Foto+de+Henrique" alt="Foto de Henrique" class="rounded-lg shadow-xl w-full max-w-sm object-cover">
+                </div>
+                <div class="text-center md:text-left">
+                    <h2 class="text-4xl font-bold mb-4 text-white">Forjada na Superação.</h2>
+                    <p class="text-lg text-[var(--color-text-muted)] leading-relaxed">"A Toolfins não nasceu em uma planilha, mas de uma necessidade real e de uma jornada pessoal de superação. A mesma determinação que venceu um linfoma é a que move nossa empresa."</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção 3: Problema e Solução -->
+        <section id="solution" class="py-20 bg-[var(--color-dark)]">
+            <div class="container mx-auto px-4 text-center">
+                <h2 class="text-4xl font-bold mb-4 text-white">A Bagunça na Mochila Custa Caro.</h2>
+                <p class="text-lg text-[var(--color-text-muted)] max-w-3xl mx-auto mb-12">Todo surfista enfrenta a mesma frustração: múltiplas ferramentas, estresse e gasto desnecessário, resultando em uma experiência abaixo do ideal.</p>
+                
+                <div class="bg-[var(--color-dark-accent)] p-8 rounded-2xl shadow-2xl shadow-black/30">
+                    <h3 class="text-3xl font-bold text-[var(--color-primary)] mb-4">A Solução: Tudo em Uma Só Ferramenta.</h3>
+                    <p class="mb-6 text-[var(--color-text-muted)]">Apresentamos a Toolfins, a ferramenta 5 em 1 que simplifica a vida do surfista.</p>
+                    <div class="flex flex-wrap justify-center gap-3 mb-8">
+                        <span class="bg-[var(--color-dark)] text-[var(--color-primary)] text-sm font-semibold px-4 py-1 rounded-full">Raspador de Parafina</span>
+                        <span class="bg-[var(--color-dark)] text-[var(--color-primary)] text-sm font-semibold px-4 py-1 rounded-full">Pente de Parafina</span>
+                        <span class="bg-[var(--color-dark)] text-[var(--color-primary)] text-sm font-semibold px-4 py-1 rounded-full">Sacador de Quilha</span>
+                        <span class="bg-[var(--color-dark)] text-[var(--color-primary)] text-sm font-semibold px-4 py-1 rounded-full">Colocador de Quilha</span>
+                        <span class="bg-[var(--color-dark)] text-[var(--color-primary)] text-sm font-semibold px-4 py-1 rounded-full">Chave de Quilha</span>
+                    </div>
+                    <!-- Substituir pela melhor foto ou vídeo do produto -->
+                    <img src="https://placehold.co/800x400/1F1F1F/FFFFFF?text=Vídeo+do+Produto+Toolfins&font=poppins" alt="Produto Toolfins" class="w-full max-w-3xl mx-auto rounded-lg shadow-lg">
+                </div>
+            </div>
+        </section>
+        
+        <!-- Seção 4: Análise de Concorrentes -->
+        <section id="competitors" class="py-20 bg-[var(--color-dark-accent)]">
+            <div class="container mx-auto px-4 text-center">
+                <h2 class="text-4xl font-bold text-white mb-12">Fragmentado vs. Integrado</h2>
+                <div class="flex flex-col md:flex-row items-center justify-around w-full max-w-4xl mx-auto">
+                    <div class="text-center p-4">
+                        <h3 class="text-2xl font-semibold mb-4 text-white">Mercado Atual</h3>
+                        <div class="flex space-x-4 justify-center">
+                            <div class="text-center"><img src="https://placehold.co/100x100/1F1F1F/FFFFFF?text=Raspador" alt="Raspador" class="rounded-lg shadow-md"><p class="mt-2 font-semibold text-white">R$ 47</p></div>
+                            <div class="text-center"><img src="https://placehold.co/100x100/1F1F1F/FFFFFF?text=Chave" alt="Chave de Quilha" class="rounded-lg shadow-md"><p class="mt-2 font-semibold text-white">R$ 20</p></div>
+                            <div class="text-center"><img src="https://placehold.co/100x100/1F1F1F/FFFFFF?text=Sacador" alt="Sacador" class="rounded-lg shadow-md"><p class="mt-2 font-semibold text-white">R$ 130</p></div>
+                        </div>
+                        <p class="mt-4 text-red-400 text-xl font-bold">Custo Total: +R$ 197</p>
+                    </div>
+                    <div class="text-5xl font-thin text-gray-700 my-8 md:my-0">VS</div>
+                    <div class="text-center p-4 border-4 border-[var(--color-primary)] rounded-2xl bg-[var(--color-dark)]">
+                        <h3 class="text-2xl font-semibold mb-4 text-white">Toolfins</h3>
+                        <img src="https://i.imgur.com/e8a3V2r.png" alt="Produto Toolfins" class="w-36 h-auto mx-auto drop-shadow-lg">
+                        <p class="mt-4 text-[var(--color-secondary)] text-xl font-bold">Preço de Venda: R$ 200</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção 5: Vantagem e Validação -->
+        <section id="moat" class="py-20 bg-[var(--color-dark)] text-white">
+            <div class="container mx-auto px-4">
+                 <h2 class="text-4xl font-bold text-center mb-12">Produto Protegido e Validado</h2>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="bg-[var(--color-dark-accent)] p-8 rounded-lg shadow-lg">
+                        <h3 class="text-2xl font-bold text-[var(--color-primary)] mb-4">Nossa Vantagem Competitiva</h3>
+                        <ul class="space-y-4">
+                            <li class="flex items-start"><span class="text-[var(--color-secondary)] mr-3 mt-1">✓</span><div><strong class="block text-white">Propriedade Intelectual:</strong> Pedido de Patente e Desenho Industrial DEPOSITADOS via escritório Reis e Souza, garantindo exclusividade.</div></li>
+                            <li class="flex items-start"><span class="text-[var(--color-secondary)] mr-3 mt-1">✓</span><div><strong class="block text-white">Pioneirismo (First-Mover):</strong> Somos a primeira e única solução "tudo-em-um" do mercado.</div></li>
+                        </ul>
+                    </div>
+                    <div class="bg-[var(--color-dark-accent)] p-8 rounded-lg shadow-lg">
+                        <h3 class="text-2xl font-bold text-[var(--color-primary)] mb-4">Validação no Mundo Real</h3>
+                         <ul class="space-y-4">
+                            <li class="flex items-start"><span class="text-[var(--color-secondary)] mr-3 mt-1">✓</span><div><strong class="block text-white">Protótipo Funcional:</strong> Testado e aprovado por surfistas de todos os níveis.</div></li>
+                            <li class="flex items-start"><span class="text-[var(--color-secondary)] mr-3 mt-1">✓</span><div><strong class="block text-white">Demanda Comprovada:</strong> Aprovado por donos de surf shops, com pedidos de compra já solicitados para o lançamento.</div></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção 6: O Mercado -->
+        <section id="market" class="py-20 bg-[var(--color-dark-accent)]">
+            <div class="container mx-auto px-4 text-center">
+                <h2 class="text-4xl font-bold mb-4 text-white">Um Mercado Apaixonado e Gigante</h2>
+                <p class="text-lg text-[var(--color-text-muted)] max-w-3xl mx-auto mb-12">Um público fiel, que consome e vive o estilo de vida do surfe.</p>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="bg-[var(--color-dark)] p-8 rounded-lg shadow-lg"><h3 class="text-5xl font-bold" style="color: var(--color-primary);">+7 Milhões</h3><p class="font-semibold mt-2 text-white">de Surfistas no Brasil</p></div>
+                    <div class="bg-[var(--color-dark)] p-8 rounded-lg shadow-lg"><h3 class="text-5xl font-bold" style="color: var(--color-primary);">Centenas</h3><p class="font-semibold mt-2 text-white">de Escolas de Surfe e Lojistas</p></div>
+                    <div class="bg-[var(--color-dark)] p-8 rounded-lg shadow-lg"><h3 class="text-5xl font-bold" style="color: var(--color-primary);">+$4 Bilhões</h3><p class="font-semibold mt-2 text-white">Mercado Global de Surf</p></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção 7: Finanças -->
+        <section id="financials" class="py-20 bg-[var(--color-dark)]">
+            <div class="container mx-auto px-4">
+                <h2 class="text-4xl font-bold text-center mb-12 text-white">A Oportunidade de Negócio</h2>
+                
+                <!-- Unit Economics -->
+                <div class="bg-[var(--color-dark-accent)] p-8 rounded-lg shadow-lg mb-12">
+                    <h3 class="text-2xl font-bold text-center mb-6 text-white">Economia Sólida e Transparente</h3>
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div><h4 class="text-xl font-semibold mb-4 text-center text-[var(--color-primary)]">Lucro por Unidade (B2C)</h4><div class="text-md space-y-2 bg-[var(--color-dark)] p-4 rounded-md text-white"><div class="flex justify-between"><span>Preço de Venda:</span> <span class="font-bold">R$ 200,00</span></div><div class="flex justify-between border-t border-gray-700 pt-2 mt-2"><span>(-) Custos e Impostos:</span> <span class="font-bold text-red-400">R$ 51,50</span></div><div class="flex justify-between text-lg font-bold mt-2 text-[var(--color-secondary)]"><span>Lucro Líquido:</span> <span>R$ 148,50</span></div></div></div>
+                        <div><h4 class="text-xl font-semibold mb-4 text-center text-[var(--color-primary)]">Lucro por Unidade (B2B)</h4><div class="text-md space-y-2 bg-[var(--color-dark)] p-4 rounded-md text-white"><div class="flex justify-between"><span>Preço de Venda:</span> <span class="font-bold">R$ 130,00</span></div><div class="flex justify-between border-t border-gray-700 pt-2 mt-2"><span>(-) Custos e Impostos:</span> <span class="font-bold text-red-400">R$ 38,90</span></div><div class="flex justify-between text-lg font-bold mt-2 text-[var(--color-secondary)]"><span>Lucro Líquido:</span> <span>R$ 91,10</span></div></div></div>
+                    </div>
+                </div>
+
+                <!-- Projeções -->
+                <div class="bg-[var(--color-dark-accent)] p-8 rounded-lg shadow-lg">
+                    <h3 class="text-2xl font-bold text-center text-white">Projeção de Crescimento (Apenas Ferramenta)</h3>
+                    <p class="text-center text-[var(--color-text-muted)] mb-6">Projeções conservadoras (desenvolvidas por economista e tributarista) baseadas em capturar aproximadamente 0.12% do mercado brasileiro no Ano 1.</p>
+                    <div class="grid md:grid-cols-3 gap-8 text-center w-full max-w-4xl mx-auto mb-6">
+                        <div class="bg-[var(--color-dark)] p-4 rounded-lg"><h4 class="text-lg font-bold text-white">Ano 1</h4><p class="text-2xl font-bold text-[var(--color-primary)]">8.400</p><p class="text-sm text-[var(--color-text-muted)]">Unidades Vendidas</p></div>
+                        <div class="bg-[var(--color-dark)] p-4 rounded-lg"><h4 class="text-lg font-bold text-white">Ano 2</h4><p class="text-2xl font-bold text-[var(--color-primary)]">12.600</p><p class="text-sm text-[var(--color-text-muted)]">Unidades Vendidas</p></div>
+                        <div class="bg-[var(--color-dark)] p-4 rounded-lg"><h4 class="text-lg font-bold text-white">Ano 3</h4><p class="text-2xl font-bold text-[var(--color-primary)]">18.900</p><p class="text-sm text-[var(--color-text-muted)]">Unidades Vendidas</p></div>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="financialChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção 8: Valuation -->
+        <section id="valuation" class="py-20 bg-[var(--color-dark-accent)]">
+             <div class="container mx-auto px-4 text-center">
+                <h2 class="text-4xl font-bold text-center mb-4 text-white">Valuation e Potencial de Retorno</h2>
+                <p class="text-center text-lg text-[var(--color-text-muted)] mb-8">Uma oportunidade clara de investimento de alto crescimento.</p>
+                <div class="bg-[var(--color-dark)] p-8 rounded-xl shadow-2xl w-full max-w-2xl text-center mx-auto">
+                    <p class="text-lg text-[var(--color-primary)]">Valuation Projetado (DCF em 3 anos)</p>
+                    <p class="text-5xl font-bold text-white my-4">+ R$ 10 Milhões</p>
+                    <p class="text-xl text-[var(--color-secondary)] font-semibold">Potencial de valorização de mais de 10x sobre o capital investido.</p>
+                    <p class="text-sm text-gray-500 mt-4">*Cálculo baseado no método de Fluxo de Caixa Descontado (DCF), com taxa de desconto de 20% e crescimento de 5% na perpetuidade.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção 9: Roadmap de Produtos -->
+        <section id="roadmap" class="py-20 bg-[var(--color-dark)]">
+            <div class="container mx-auto px-4">
+                <h2 class="text-4xl font-bold text-center mb-12 text-white">Roadmap: Mais que uma Ferramenta, uma Plataforma</h2>
+                <div class="grid md:grid-cols-3 gap-8 text-center">
+                    <div class="bg-[var(--color-dark-accent)] p-8 rounded-lg shadow-lg"><h3 class="text-2xl font-bold text-[var(--color-primary)] mb-2">Toolfins V2</h3><p>Versão aprimorada com chave de quilha com sistema de catraca e seletor, materiais nobres e novas funcionalidades.</p></div>
+                    <div class="bg-[var(--color-dark-accent)] p-8 rounded-lg shadow-lg"><h3 class="text-2xl font-bold text-[var(--color-primary)] mb-2">Toolfins Snowboard</h3><p>Expansão para esportes de neve com a consultoria de Dinho Barros, atual vice-presidente da CBDN, bicampeão brasileiro e pioneiro do esporte no país.</p></div>
+                    <div class="bg-[var(--color-dark-accent)] p-8 rounded-lg shadow-lg"><h3 class="text-2xl font-bold text-[var(--color-primary)] mb-2">Expansão da Marca</h3><p>Linha de vestuário e acessórios a serem co-criados com o novo sócio-investidor para máxima autenticidade.</p></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção 10: Oferta -->
+        <section id="ask" class="py-20 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1502680390469-be75c88b63f8?q=80&w=2070&auto=format&fit=crop');">
+            <div class="absolute inset-0 bg-[var(--color-dark)]/80"></div>
+            <div class="relative z-10 container mx-auto px-4 text-white">
+                <h2 class="text-4xl font-bold text-center mb-12">A Nossa Oferta</h2>
+                
+                <div class="bg-white text-[var(--color-dark)] p-8 rounded-2xl shadow-2xl max-w-4xl mx-auto">
+                    <h3 class="text-3xl font-bold text-center mb-4">A Nossa Oferta</h3>
+                    <p class="text-xl text-center text-gray-600 mb-8">Buscamos um sócio-investidor com um aporte de <span class="font-bold" style="color: var(--color-primary);">R$ 250.000</span> em troca de <span class="font-bold" style="color: var(--color-primary);">30%</span> de participação.</p>
+                    <div class="grid md:grid-cols-2 gap-8 items-center">
+                        <div>
+                            <h4 class="text-xl font-bold mb-4">Uso dos Recursos:</h4>
+                            <div class="space-y-3">
+                                <div class="flex items-center"><div class="w-2/5 font-semibold text-sm">Produção (Molde e 1º Lote)</div><div class="w-3/5 bg-gray-200 rounded-full h-5"><div class="h-5 rounded-full" style="width: 72%; background-color: var(--color-primary);"></div></div><span class="ml-2 font-bold text-sm">72%</span></div>
+                                <div class="flex items-center"><div class="w-2/5 font-semibold text-sm">Marketing e E-commerce</div><div class="w-3/5 bg-gray-200 rounded-full h-5"><div class="h-5 rounded-full" style="width: 20%; background-color: var(--color-primary);"></div></div><span class="ml-2 font-bold text-sm">20%</span></div>
+                                <div class="flex items-center"><div class="w-2/5 font-semibold text-sm">Custos Operacionais</div><div class="w-3/5 bg-gray-200 rounded-full h-5"><div class="h-5 rounded-full" style="width: 8%; background-color: var(--color-primary);"></div></div><span class="ml-2 font-bold text-sm">8%</span></div>
+                            </div>
+                        </div>
+                        <div class="bg-[var(--color-dark-accent)] p-6 rounded-lg text-center text-white">
+                            <h4 class="text-xl font-bold mb-2">Breakeven e Marco Principal</h4>
+                            <p class="text-[var(--color-text-muted)]">Atingir o <strong class="text-[var(--color-secondary)]">ponto de equilíbrio</strong> com apenas <strong class="text-[var(--color-secondary)]">~1.900 unidades</strong>. Nosso marco principal é escalar para <strong class="text-[var(--color-primary)]">10.000 unidades vendidas</strong>, consolidando a marca no mercado.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção 11: Time e Contato -->
+        <section id="team" class="py-20 bg-[var(--color-dark)]">
+            <div class="container mx-auto px-4 text-center">
+                <h2 class="text-4xl font-bold mb-8 text-white">O Time e o Convite Final</h2>
+                <div class="flex flex-col md:flex-row justify-center items-center gap-12 mb-12">
+                    <!-- Substituir pelos retratos oficiais do time -->
+                    <div class="text-center"><img src="https://placehold.co/150x150/CCCCCC/FFFFFF?text=Henrique" class="w-32 h-32 rounded-full mx-auto shadow-lg"><h3 class="mt-4 text-xl font-semibold text-white">Henrique</h3><p class="text-[var(--color-text-muted)]">Sócio-Administrador</p></div>
+                    <div class="text-center"><img src="https://placehold.co/150x150/CCCCCC/FFFFFF?text=Artur" class="w-32 h-32 rounded-full mx-auto shadow-lg"><h3 class="mt-4 text-xl font-semibold text-white">Artur</h3><p class="text-[var(--color-text-muted)]">Sócio-Administrador</p></div>
+                    <div class="text-center"><img src="https://placehold.co/150x150/CCCCCC/FFFFFF?text=Julia" class="w-32 h-32 rounded-full mx-auto shadow-lg"><h3 class="mt-4 text-xl font-semibold text-white">Julia</h3><p class="text-[var(--color-text-muted)]">Sócia</p></div>
+                </div>
+                <div class="bg-[var(--color-dark-accent)] text-white p-8 rounded-lg max-w-2xl mx-auto shadow-lg">
+                    <!-- Substituir pelo mascote oficial -->
+                    <img src="https://placehold.co/150x150/FFFFFF/1F1F1F?text=Toolfinho&font=poppins" alt="Mascote Toolfinho" class="w-24 mx-auto mb-4 rounded-full">
+                    <h3 class="text-2xl font-bold mb-4">Vamos Juntos Nessa Onda?</h3>
+                    <p class="mb-2"><strong>Email:</strong> toolfins@gmail.com</p>
+                    <p><strong>Instagram:</strong> @toolfins</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const ctx = document.getElementById('financialChart').getContext('2d');
+            const financialChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['Ano 1', 'Ano 2', 'Ano 3'],
+                    datasets: [
+                        {
+                            label: 'Receita Bruta (R$)',
+                            data: [1503600, 2213280, 3250800],
+                            backgroundColor: 'rgba(142, 226, 237, 0.8)', // Primary color
+                            borderColor: 'rgba(142, 226, 237, 1)',
+                            borderWidth: 1
+                        },
+                        {
+                            label: 'Lucro Líquido (R$)',
+                            data: [876756, 1314561, 1954518],
+                            backgroundColor: 'rgba(255, 185, 63, 0.8)', // Secondary color
+                            borderColor: 'rgba(255, 185, 63, 1)',
+                            borderWidth: 1
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: {
+                                color: 'rgba(255, 255, 255, 0.7)',
+                                callback: function(value, index, values) {
+                                    if (value >= 1000000) {
+                                        return 'R$ ' + (value / 1000000).toFixed(1) + 'M';
+                                    } else if (value >= 1000) {
+                                        return 'R$ ' + (value / 1000) + 'k';
+                                    }
+                                    return 'R$ ' + value;
+                                }
+                            },
+                            grid: {
+                                color: 'rgba(255, 255, 255, 0.1)'
+                            }
+                        },
+                        x: {
+                           ticks: {
+                                color: 'rgba(255, 255, 255, 0.7)'
+                           },
+                           grid: {
+                                color: 'rgba(255, 255, 255, 0.1)'
+                           }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            labels: {
+                                color: 'rgba(255, 255, 255, 0.8)'
+                            }
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    let label = context.dataset.label || '';
+                                    if (label) {
+                                        label += ': ';
+                                    }
+                                    if (context.parsed.y !== null) {
+                                        label += new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(context.parsed.y);
+                                    }
+                                    return label;
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
