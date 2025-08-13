@@ -71,14 +71,13 @@
 
     <main>
         <!-- Seção 1: Hero -->
-        <section id="hero" class="h-screen flex items-center justify-center bg-cover bg-center text-center text-white"
+        <section id="hero" class="h-screen bg-cover bg-center text-white"
             style="background-image: url('onda.png');">
-            <div class="absolute inset-0 bg-black/60"></div>
-            <div class="relative z-10 p-4 flex flex-col md:flex-row items-center justify-center gap-8">
+            <div class="h-full w-full bg-black/60 flex flex-col items-center justify-center gap-8 p-4 text-center md:flex-row md:text-left">
                 <img src="toolfinho.png" alt="Ferramenta Toolfins"
                     class="w-48 md:w-64 drop-shadow-2xl">
-                <div class="md:text-left">
-                    <h1 class="text-5xl md:text-7xl font-bold mb-2"><img src="logo branco.png" style="height: 72px;"></h1>
+                <div>
+                    <h1 class="text-5xl md:text-7xl font-bold mb-2 inline-block"><img src="logo branco.png" style="height: 72px;"></h1>
                     <p class="text-2xl md:text-3xl font-light">O canivete suíço do surfista.</p>
                 </div>
             </div>
@@ -402,20 +401,23 @@
                 <h2 class="text-4xl font-bold mb-8 text-white">O Time e o Convite Final</h2>
                 <div class="flex flex-col md:flex-row justify-center items-center gap-12 mb-12">
                     <!-- Substituir pelos retratos oficiais do time -->
-                    <div class="text-center"><img src="foto henrique.png"
-                            class="w-32 h-32 rounded-full mx-auto shadow-lg">
+                    <div class="text-center"><img src="foto henrique.png?nocache=12345"
+                            class="w-32 rounded-full mx-auto shadow-lg object-cover aspect-square">
                         <h3 class="mt-4 text-xl font-semibold text-white">Henrique</h3>
                         <p class="text-[var(--color-text-muted)]">Sócio-Administrador</p>
+                        <p class="text-[var(--color-text-muted)]">50%</p>
                     </div>
                     <div class="text-center"><img src="foto artur.png"
                             class="w-32 h-32 rounded-full mx-auto shadow-lg">
                         <h3 class="mt-4 text-xl font-semibold text-white">Artur</h3>
                         <p class="text-[var(--color-text-muted)]">Sócio-Administrador</p>
+                        <p class="text-[var(--color-text-muted)]">45%</p>
                     </div>
                     <div class="text-center"><img src="foto ju.png"
                             class="w-32 h-32 rounded-full mx-auto shadow-lg">
                         <h3 class="mt-4 text-xl font-semibold text-white">Julia</h3>
                         <p class="text-[var(--color-text-muted)]">Sócia</p>
+                        <p class="text-[var(--color-text-muted)]">5%</p>
                     </div>
                 </div>
                 <div class="bg-[var(--color-dark-accent)] text-white p-8 rounded-lg max-w-2xl mx-auto shadow-lg">
