@@ -511,6 +511,13 @@
             });
         });
     </script>
+    <script>
+        // Impede o salto para a âncora no carregamento da página
+        if (location.hash) {
+            history.replaceState(null, document.title, window.location.pathname);
+            window.scrollTo(0, 0);
+        }
+    </script>
 </body>
 
 </html>
