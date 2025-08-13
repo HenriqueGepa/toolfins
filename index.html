@@ -17,6 +17,12 @@
         - Justificativa: A combinação de elementos visuais e textuais foi escolhida para manter o engajamento alto, enquanto o gráfico interativo permite uma análise mais profunda dos dados financeiros, atendendo tanto ao apelo emocional quanto à necessidade de dados concretos de um investidor. -->
     <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
     <title>Pitch Interativo - Toolfins</title>
+    <script>
+        // Impede o salto para a âncora no carregamento da página, atuando antes da renderização.
+        if (window.location.hash) {
+            window.history.replaceState(null, null, ' ');
+        }
+    </script>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -58,6 +64,8 @@
         <div class="container mx-auto px-4">
             <div class="flex justify-between items-center py-2">
                 <a href="#hero" class="text-2xl font-bold text-white"><img src="logo branco.png" style="height: 32px;"></a>
+                
+                <!-- Desktop Menu -->
                 <div class="hidden md:flex space-x-6 text-sm font-semibold text-gray-300">
                     <a href="#story" class="hover:text-[var(--color-primary)] transition">A História</a>
                     <a href="#solution" class="hover:text-[var(--color-primary)] transition">A Solução</a>
@@ -65,6 +73,24 @@
                     <a href="#financials" class="hover:text-[var(--color-primary)] transition">Finanças</a>
                     <a href="#ask" class="hover:text-[var(--color-primary)] transition">A Oferta</a>
                 </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-white focus:outline-none">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-4 6h4"></path></svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 flex flex-col items-center">
+                <a href="#story" class="text-gray-300 hover:text-[var(--color-primary)] block px-3 py-2 rounded-md text-base font-medium">A História</a>
+                <a href="#solution" class="text-gray-300 hover:text-[var(--color-primary)] block px-3 py-2 rounded-md text-base font-medium">A Solução</a>
+                <a href="#market" class="text-gray-300 hover:text-[var(--color-primary)] block px-3 py-2 rounded-md text-base font-medium">O Mercado</a>
+                <a href="#financials" class="text-gray-300 hover:text-[var(--color-primary)] block px-3 py-2 rounded-md text-base font-medium">Finanças</a>
+                <a href="#ask" class="text-gray-300 hover:text-[var(--color-primary)] block px-3 py-2 rounded-md text-base font-medium">A Oferta</a>
             </div>
         </div>
     </nav>
@@ -434,6 +460,21 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
+            // Mobile menu toggle
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenuButton.addEventListener('click', function () {
+                mobileMenu.classList.toggle('hidden');
+            });
+
+            // Close mobile menu when a link is clicked
+            const mobileMenuLinks = mobileMenu.getElementsByTagName('a');
+            for (let i = 0; i < mobileMenuLinks.length; i++) {
+                mobileMenuLinks[i].addEventListener('click', function () {
+                    mobileMenu.classList.add('hidden');
+                });
+            }
+
             const ctx = document.getElementById('financialChart').getContext('2d');
             const financialChart = new Chart(ctx, {
                 type: 'bar',
@@ -510,13 +551,6 @@
                 }
             });
         });
-    </script>
-    <script>
-        // Impede o salto para a âncora no carregamento da página
-        if (location.hash) {
-            history.replaceState(null, document.title, window.location.pathname);
-            window.scrollTo(0, 0);
-        }
     </script>
 </body>
 
