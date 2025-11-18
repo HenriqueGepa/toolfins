@@ -4,18 +4,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Chosen Palette: Praia Vibes (Baseado no PDF da Toolfins) -->
-    <!-- Application Structure Plan: Uma SPA de rolagem vertical com seções temáticas que constroem uma narrativa de investimento. O fluxo começa com a conexão emocional (A História), valida a necessidade (Problema/Solução), prova a viabilidade (Concorrentes, Vantagem, Validação), demonstra o potencial (Mercado, Finanças, Roadmap), e termina com uma chamada clara para ação (A Oferta). Essa estrutura foi escolhida para guiar o investidor por uma jornada lógica, respondendo a perguntas antes que sejam feitas e construindo confiança a cada etapa. A navegação fixa permite acesso direto a qualquer ponto. -->
-    <!-- Visualization & Content Choices: 
-        - História: Layout de duas colunas para combinar imagem e texto, criando impacto emocional.
-        - Problema/Solução/Vantagem/Validação/Concorrentes: Cards (HTML/CSS) para apresentar informações de forma rápida e digerível.
-        - Mercado: Cards com números grandes para destacar o potencial massivo.
-        - Unit Economics: Blocos de texto estruturados para clareza financeira máxima.
-        - Projeções: Gráfico de barras interativo (Chart.js/Canvas) para visualizar o crescimento de receita e lucro, uma escolha clássica e eficaz para dados financeiros.
-        - Roadmap: Layout de linha do tempo para mostrar a evolução planejada dos produtos.
-        - Oferta: Layout claro com gráfico de pizza visual (CSS) para o uso dos recursos, simplificando a alocação do capital.
-        - Justificativa: A combinação de elementos visuais e textuais foi escolhida para manter o engajamento alto, enquanto o gráfico interativo permite uma análise mais profunda dos dados financeiros, atendendo tanto ao apelo emocional quanto à necessidade de dados concretos de um investidor. -->
-    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
     <title>Pitch Interativo - Toolfins</title>
     <script>
         // Impede o salto para a âncora no carregamento da página, atuando antes da renderização.
@@ -36,7 +24,6 @@
             --color-dark-accent: #2c2c2c;
             --color-light: #FFFFFF;
             --color-text-muted: #a0aec0;
-            /* gray-400 */
         }
 
         body {
@@ -59,13 +46,11 @@
 
 <body>
 
-    <!-- Navegação Fixa -->
     <nav class="sticky top-0 z-50 bg-[var(--color-dark)]/80 backdrop-blur-md shadow-lg shadow-black/20">
         <div class="container mx-auto px-4">
             <div class="flex justify-between items-center py-2">
                 <a href="#hero" class="text-2xl font-bold text-white"><img src="logo branco.png" style="height: 32px;"></a>
                 
-                <!-- Desktop Menu -->
                 <div class="hidden md:flex space-x-6 text-sm font-semibold text-gray-300">
                     <a href="#story" class="hover:text-[var(--color-primary)] transition">A História</a>
                     <a href="#solution" class="hover:text-[var(--color-primary)] transition">A Solução</a>
@@ -74,7 +59,6 @@
                     <a href="#ask" class="hover:text-[var(--color-primary)] transition">A Oferta</a>
                 </div>
 
-                <!-- Mobile Menu Button -->
                 <div class="md:hidden">
                     <button id="mobile-menu-button" class="text-white focus:outline-none">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-4 6h4"></path></svg>
@@ -83,7 +67,6 @@
             </div>
         </div>
 
-        <!-- Mobile Menu -->
         <div id="mobile-menu" class="hidden md:hidden">
             <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 flex flex-col items-center">
                 <a href="#story" class="text-gray-300 hover:text-[var(--color-primary)] block px-3 py-2 rounded-md text-base font-medium">A História</a>
@@ -96,7 +79,6 @@
     </nav>
 
     <main>
-        <!-- Seção 1: Hero -->
         <section id="hero" class="h-screen bg-cover bg-center text-white"
             style="background-image: url('onda.png');">
             <div class="h-full w-full bg-black/60 flex flex-col items-center justify-center gap-8 p-4 text-center md:flex-row md:text-left">
@@ -109,11 +91,9 @@
             </div>
         </section>
 
-        <!-- Seção 2: A História -->
         <section id="story" class="py-20 bg-[var(--color-dark-accent)]">
             <div class="container mx-auto px-4 grid md:grid-cols-2 gap-12 items-center">
                 <div class="flex justify-center">
-                    <!-- Substituir pela foto do Henrique -->
                     <img src="fotoherique.png" alt="Foto de Henrique"
                         class="rounded-lg shadow-xl w-full max-w-sm object-cover">
                 </div>
@@ -126,7 +106,6 @@
             </div>
         </section>
 
-        <!-- Seção 3: Problema e Solução -->
         <section id="solution" class="py-20 bg-[var(--color-dark)]">
             <div class="container mx-auto px-4 text-center">
                 <h2 class="text-4xl font-bold mb-4 text-white">A Bagunça na Mochila Custa Caro.</h2>
@@ -156,17 +135,13 @@
                             class="bg-[var(--color-dark)] text-[var(--color-text-muted)] text-sm font-semibold px-4 py-1 rounded-full">Chave
                             de Quilha</span>
                     </div>
-                    <!-- Substituir pela melhor foto ou vídeo do produto -->
                     <video width="800" height="400" class="w-full max-w-3xl mx-auto rounded-lg shadow-lg" autoplay loop playsinline controls>
                         <source src="Toolfins Horizontal Divulgação.mp4" type="video/mp4">
                     </video>
-                    <!-- <img src="https://placehold.co/800x400/1F1F1F/FFFFFF?text=Vídeo+do+Produto+Toolfins&font=poppins"
-                        alt="Produto Toolfins" class="w-full max-w-3xl mx-auto rounded-lg shadow-lg"> -->
                 </div>
             </div>
         </section>
 
-        <!-- Seção 4: Análise de Concorrentes -->
         <section id="competitors" class="py-20 bg-[var(--color-dark-accent)]">
             <div class="container mx-auto px-4 text-center">
                 <h2 class="text-4xl font-bold text-white mb-12">Fragmentado vs. Integrado</h2>
@@ -201,7 +176,6 @@
             </div>
         </section>
 
-        <!-- Seção 5: Vantagem e Validação -->
         <section id="moat" class="py-20 bg-[var(--color-dark)] text-white">
             <div class="container mx-auto px-4">
                 <h2 class="text-4xl font-bold text-center mb-12">Produto Protegido e Validado</h2>
@@ -237,7 +211,6 @@
             </div>
         </section>
 
-        <!-- Seção 6: O Mercado -->
         <section id="market" class="py-20 bg-[var(--color-dark-accent)]">
             <div class="container mx-auto px-4 text-center">
                 <h2 class="text-4xl font-bold mb-4 text-white">Um Mercado Apaixonado e Gigante</h2>
@@ -260,81 +233,127 @@
             </div>
         </section>
 
-        <!-- Seção 7: Finanças -->
         <section id="financials" class="py-20 bg-[var(--color-dark)]">
             <div class="container mx-auto px-4">
                 <h2 class="text-4xl font-bold text-center mb-12 text-white">A Oportunidade de Negócio</h2>
 
-                <!-- Unit Economics -->
+                <div class="bg-[var(--color-dark-accent)] p-6 rounded-lg shadow-lg mb-12 border-l-4 border-[var(--color-secondary)]">
+                    <h3 class="text-2xl font-bold mb-2 text-white">Estratégia de Preço Ajustado</h3>
+                    <p class="text-[var(--color-text-muted)]">
+                        Para otimizar a margem operacional, todos os cenários abaixo consideram um <strong>reajuste de 10% no valor de venda</strong> (B2C e B2B) a partir do segundo mês de operação.
+                    </p>
+                </div>
+                
                 <div class="bg-[var(--color-dark-accent)] p-8 rounded-lg shadow-lg mb-12">
-                    <h3 class="text-2xl font-bold text-center mb-6 text-white">Economia Sólida e Transparente</h3>
+                    <h3 class="text-2xl font-bold text-center mb-6 text-white">Economia Sólida por Unidade</h3>
                     <div class="grid md:grid-cols-2 gap-8">
                         <div>
-                            <h4 class="text-xl font-semibold mb-4 text-center text-[var(--color-primary)]">Lucro por
-                                Unidade (B2C)</h4>
+                            <h4 class="text-xl font-semibold mb-4 text-center text-[var(--color-primary)]">Lucro Médio por Unidade (B2C)</h4>
                             <div class="text-md space-y-2 bg-[var(--color-dark)] p-4 rounded-md text-white">
-                                <div class="flex justify-between"><span>Preço de Venda:</span> <span
-                                        class="font-bold">R$ 200,00</span></div>
-                                <div class="flex justify-between border-t border-gray-700 pt-2 mt-2"><span>(-) Custos e
-                                        Impostos:</span> <span class="font-bold text-red-400">R$ 51,50</span></div>
-                                <div class="flex justify-between text-lg font-bold mt-2 text-[var(--color-secondary)]">
-                                    <span>Lucro Líquido:</span> <span>R$ 148,50</span></div>
+                                <div class="flex justify-between"><span>Preço Médio de Venda:</span> <span class="font-bold">R$ 218,33</span></div>
+                                <div class="flex justify-between border-t border-gray-700 pt-2 mt-2"><span>(-) Custo (Prod. + ICMS):</span> <span class="font-bold text-red-400">R$ 54,67</span></div>
+                                <div class="flex justify-between text-lg font-bold mt-2 text-[var(--color-secondary)]"><span>Lucro Bruto Médio:</span> <span>R$ 163,66</span></div>
                             </div>
                         </div>
                         <div>
-                            <h4 class="text-xl font-semibold mb-4 text-center text-[var(--color-primary)]">Lucro por
-                                Unidade (B2B)</h4>
+                            <h4 class="text-xl font-semibold mb-4 text-center text-[var(--color-primary)]">Lucro Médio por Unidade (B2B)</h4>
                             <div class="text-md space-y-2 bg-[var(--color-dark)] p-4 rounded-md text-white">
-                                <div class="flex justify-between"><span>Preço de Venda:</span> <span
-                                        class="font-bold">R$ 130,00</span></div>
-                                <div class="flex justify-between border-t border-gray-700 pt-2 mt-2"><span>(-) Custos e
-                                        Impostos:</span> <span class="font-bold text-red-400">R$ 38,90</span></div>
-                                <div class="flex justify-between text-lg font-bold mt-2 text-[var(--color-secondary)]">
-                                    <span>Lucro Líquido:</span> <span>R$ 91,10</span></div>
+                                <div class="flex justify-between"><span>Preço Médio de Venda:</span> <span class="font-bold">R$ 141,58</span></div>
+                                <div class="flex justify-between border-t border-gray-700 pt-2 mt-2"><span>(-) Custo (Prod. + ICMS):</span> <span class="font-bold text-red-400">R$ 41,36</span></div>
+                                <div class="flex justify-between text-lg font-bold mt-2 text-[var(--color-secondary)]"><span>Lucro Bruto Médio:</span> <span>R$ 100,22</span></div>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Projeções -->
-                <div class="bg-[var(--color-dark-accent)] p-8 rounded-lg shadow-lg">
-                    <h3 class="text-2xl font-bold text-center text-white">Projeção de Crescimento (Apenas Ferramenta)
-                    </h3>
-                    <p class="text-center text-[var(--color-text-muted)] mb-6">Projeções conservadoras (desenvolvidas
-                        por economista e tributarista) baseadas em capturar aproximadamente 0.12% do mercado brasileiro
-                        no Ano 1.</p>
+                <div class="bg-[var(--color-dark-accent)] p-8 rounded-lg shadow-lg mb-16">
+                    <h3 class="text-2xl font-bold text-center text-white">1. Cenário Base (0,12% de Captação)</h3>
+                    <p class="text-center text-[var(--color-text-muted)] mb-6">Projeção conservadora mantendo a estrutura no Simples Nacional (11%) com logística interna.</p>
                     <div class="grid md:grid-cols-3 gap-8 text-center w-full max-w-4xl mx-auto mb-6">
                         <div class="bg-[var(--color-dark)] p-4 rounded-lg">
                             <h4 class="text-lg font-bold text-white">Ano 1</h4>
                             <p class="text-2xl font-bold text-[var(--color-primary)]">8.400</p>
-                            <p class="text-sm text-[var(--color-text-muted)]">Unidades Vendidas</p>
+                            <p class="text-sm text-[var(--color-text-muted)]">Unidades</p>
                         </div>
                         <div class="bg-[var(--color-dark)] p-4 rounded-lg">
                             <h4 class="text-lg font-bold text-white">Ano 2</h4>
                             <p class="text-2xl font-bold text-[var(--color-primary)]">12.600</p>
-                            <p class="text-sm text-[var(--color-text-muted)]">Unidades Vendidas</p>
+                            <p class="text-sm text-[var(--color-text-muted)]">Unidades</p>
                         </div>
                         <div class="bg-[var(--color-dark)] p-4 rounded-lg">
                             <h4 class="text-lg font-bold text-white">Ano 3</h4>
                             <p class="text-2xl font-bold text-[var(--color-primary)]">18.900</p>
-                            <p class="text-sm text-[var(--color-text-muted)]">Unidades Vendidas</p>
+                            <p class="text-sm text-[var(--color-text-muted)]">Unidades</p>
                         </div>
                     </div>
                     <div class="chart-container">
-                        <canvas id="financialChart"></canvas>
+                        <canvas id="financialChartBase"></canvas>
+                    </div>
+                </div>
+
+                <div class="bg-[var(--color-dark-accent)] p-8 rounded-lg shadow-lg mb-16">
+                    <h3 class="text-2xl font-bold text-center text-white">2. Cenário Otimista (5% de Captação)</h3>
+                    <p class="text-center text-[var(--color-text-muted)] max-w-3xl mx-auto mb-6">
+                        Visão com Investidor: O alto volume exige contratação de Logística (custo extra de R$ 10,00/unidade) e migração para Lucro Presumido (Imposto ~13,33%).
+                    </p>
+                    <div class="grid md:grid-cols-3 gap-8 text-center w-full max-w-4xl mx-auto mb-6">
+                        <div class="bg-[var(--color-dark)] p-4 rounded-lg">
+                            <h4 class="text-lg font-bold text-white">Ano 1</h4>
+                            <p class="text-2xl font-bold text-[var(--color-primary)]">350.000</p>
+                            <p class="text-sm text-[var(--color-text-muted)]">Unidades</p>
+                        </div>
+                        <div class="bg-[var(--color-dark)] p-4 rounded-lg">
+                            <h4 class="text-lg font-bold text-white">Ano 2</h4>
+                            <p class="text-2xl font-bold text-[var(--color-primary)]">525.000</p>
+                            <p class="text-sm text-[var(--color-text-muted)]">Unidades</p>
+                        </div>
+                        <div class="bg-[var(--color-dark)] p-4 rounded-lg">
+                            <h4 class="text-lg font-bold text-white">Ano 3</h4>
+                            <p class="text-2xl font-bold text-[var(--color-primary)]">787.500</p>
+                            <p class="text-sm text-[var(--color-text-muted)]">Unidades</p>
+                        </div>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="financialChart5PercentOptimistic"></canvas>
+                    </div>
+                </div>
+
+                <div class="bg-[var(--color-dark-accent)] p-8 rounded-lg shadow-lg">
+                    <h3 class="text-2xl font-bold text-center text-white">3. Cenário Agressivo (10% de Captação)</h3>
+                    <p class="text-center text-[var(--color-text-muted)] max-w-3xl mx-auto mb-6">
+                        Visão Agressiva: Marketing massivo capturando 10% do mercado. Inclui custos de Logística escalável e tributação de Lucro Presumido.
+                    </p>
+                    <div class="grid md:grid-cols-3 gap-8 text-center w-full max-w-4xl mx-auto mb-6">
+                        <div class="bg-[var(--color-dark)] p-4 rounded-lg">
+                            <h4 class="text-lg font-bold text-white">Ano 1</h4>
+                            <p class="text-2xl font-bold text-[var(--color-primary)]">700.000</p>
+                            <p class="text-sm text-[var(--color-text-muted)]">Unidades</p>
+                        </div>
+                        <div class="bg-[var(--color-dark)] p-4 rounded-lg">
+                            <h4 class="text-lg font-bold text-white">Ano 2</h4>
+                            <p class="text-2xl font-bold text-[var(--color-primary)]">1.050.000</p>
+                            <p class="text-sm text-[var(--color-text-muted)]">Unidades</p>
+                        </div>
+                        <div class="bg-[var(--color-dark)] p-4 rounded-lg">
+                            <h4 class="text-lg font-bold text-white">Ano 3</h4>
+                            <p class="text-2xl font-bold text-[var(--color-primary)]">1.575.000</p>
+                            <p class="text-sm text-[var(--color-text-muted)]">Unidades</p>
+                        </div>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="financialChart10PercentAggressive"></canvas>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Seção 8: Valuation -->
         <section id="valuation" class="py-20 bg-[var(--color-dark-accent)]">
             <div class="container mx-auto px-4 text-center">
                 <h2 class="text-4xl font-bold text-center mb-4 text-white">Valuation e Potencial de Retorno</h2>
                 <p class="text-center text-lg text-[var(--color-text-muted)] mb-8">Uma oportunidade clara de
                     investimento de alto crescimento.</p>
                 <div class="bg-[var(--color-dark)] p-8 rounded-xl shadow-2xl w-full max-w-2xl text-center mx-auto">
-                    <p class="text-lg text-[var(--color-primary)]">Valuation Projetado (DCF em 3 anos)</p>
+                    <p class="text-lg text-[var(--color-primary)]">Valuation Projetado (Base - DCF em 3 anos)</p>
                     <p class="text-xl font-bold text-white my-4">+ R$ 10 Milhões</p>
                     <p class="text-xl text-[var(--color-secondary)] font-semibold">Potencial de valorização de mais de
                         10x sobre o capital investido.</p>
@@ -344,7 +363,6 @@
             </div>
         </section>
 
-        <!-- Seção 9: Roadmap de Produtos -->
         <section id="roadmap" class="py-20 bg-[var(--color-dark)]">
             <div class="container mx-auto px-4">
                 <h2 class="text-4xl font-bold text-center mb-12 text-white">Roadmap: Mais que uma Ferramenta, uma
@@ -369,7 +387,6 @@
             </div>
         </section>
 
-        <!-- Seção 10: Oferta -->
         <section id="ask" class="py-20 bg-cover bg-center"
             style="background-image: url('https://images.unsplash.com/photo-1502680390469-be75c88b63f8?q=80&w=2070&auto=format&fit=crop');">
             <div class="absolute inset-0 bg-[var(--color-dark)]/80"></div>
@@ -421,12 +438,10 @@
             </div>
         </section>
 
-        <!-- Seção 11: Time e Contato -->
         <section id="team" class="py-20 bg-[var(--color-dark)]">
             <div class="container mx-auto px-4 text-center">
                 <h2 class="text-4xl font-bold mb-8 text-white">O Time e o Convite Final</h2>
                 <div class="flex flex-col md:flex-row justify-center items-center gap-12 mb-12">
-                    <!-- Substituir pelos retratos oficiais do time -->
                     <div class="text-center"><img src="foto henrique.png?nocache=12345"
                             class="w-32 rounded-full mx-auto shadow-lg object-cover aspect-square">
                         <h3 class="mt-4 text-xl font-semibold text-white">Henrique</h3>
@@ -447,7 +462,6 @@
                     </div>
                 </div>
                 <div class="bg-[var(--color-dark-accent)] text-white p-8 rounded-lg max-w-2xl mx-auto shadow-lg">
-                    <!-- Substituir pelo mascote oficial -->
                     <img src="toolfinho.png"
                         alt="Mascote Toolfinho" class="w-24 mx-auto mb-4 rounded-full">
                     <h3 class="text-2xl font-bold mb-4">Vamos Juntos Nessa Onda?</h3>
@@ -476,23 +490,32 @@
                 });
             }
 
-            const ctx = document.getElementById('financialChart').getContext('2d');
-            const financialChart = new Chart(ctx, {
+            // =====================================================
+            // CONFIGURAÇÃO DOS GRÁFICOS FINANCEIROS (ATUALIZADOS)
+            // =====================================================
+
+            // 1. CENÁRIO BASE (0.12%)
+            // Dados recalculados com aumento de 10% no preço após Mês 1
+            const receita_base = [1641430.0, 2414002.5, 3548790.0];
+            const lucro_liquido_base = [975215.3, 1458641.78, 2166690.9];
+
+            const ctx_base = document.getElementById('financialChartBase').getContext('2d');
+            new Chart(ctx_base, {
                 type: 'bar',
                 data: {
                     labels: ['Ano 1', 'Ano 2', 'Ano 3'],
                     datasets: [
                         {
                             label: 'Receita Bruta (R$)',
-                            data: [1503600, 2213280, 3250800],
-                            backgroundColor: 'rgba(142, 226, 237, 0.8)', // Primary color
+                            data: receita_base,
+                            backgroundColor: 'rgba(142, 226, 237, 0.8)',
                             borderColor: 'rgba(142, 226, 237, 1)',
                             borderWidth: 1
                         },
                         {
                             label: 'Lucro Líquido (R$)',
-                            data: [876756, 1314561, 1954518],
-                            backgroundColor: 'rgba(255, 185, 63, 0.8)', // Secondary color
+                            data: lucro_liquido_base,
+                            backgroundColor: 'rgba(255, 185, 63, 0.8)',
                             borderColor: 'rgba(255, 185, 63, 1)',
                             borderWidth: 1
                         }
@@ -506,7 +529,7 @@
                             beginAtZero: true,
                             ticks: {
                                 color: 'rgba(255, 255, 255, 0.7)',
-                                callback: function (value, index, values) {
+                                callback: function (value) {
                                     if (value >= 1000000) {
                                         return 'R$ ' + (value / 1000000).toFixed(1) + 'M';
                                     } else if (value >= 1000) {
@@ -515,32 +538,20 @@
                                     return 'R$ ' + value;
                                 }
                             },
-                            grid: {
-                                color: 'rgba(255, 255, 255, 0.1)'
-                            }
+                            grid: { color: 'rgba(255, 255, 255, 0.1)' }
                         },
                         x: {
-                            ticks: {
-                                color: 'rgba(255, 255, 255, 0.7)'
-                            },
-                            grid: {
-                                color: 'rgba(255, 255, 255, 0.1)'
-                            }
+                            ticks: { color: 'rgba(255, 255, 255, 0.7)' },
+                            grid: { color: 'rgba(255, 255, 255, 0.1)' }
                         }
                     },
                     plugins: {
-                        legend: {
-                            labels: {
-                                color: 'rgba(255, 255, 255, 0.8)'
-                            }
-                        },
+                        legend: { labels: { color: 'rgba(255, 255, 255, 0.8)' } },
                         tooltip: {
                             callbacks: {
                                 label: function (context) {
                                     let label = context.dataset.label || '';
-                                    if (label) {
-                                        label += ': ';
-                                    }
+                                    if (label) label += ': ';
                                     if (context.parsed.y !== null) {
                                         label += new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(context.parsed.y);
                                     }
@@ -551,8 +562,150 @@
                     }
                 }
             });
+
+            // 2. CENÁRIO OTIMISTA (5%)
+            // Dados com Preço Ajustado + Logística R$10 + Imposto Lucro Presumido
+            const receita_otimista = [68392916.67, 100583437.5, 147866250.0];
+            const lucro_liquido_otimista = [37980415.88, 55623146.53, 81398503.88];
+
+            const ctx_optimistic = document.getElementById('financialChart5PercentOptimistic').getContext('2d');
+            new Chart(ctx_optimistic, {
+                type: 'bar',
+                data: {
+                    labels: ['Ano 1', 'Ano 2', 'Ano 3'],
+                    datasets: [
+                        {
+                            label: 'Receita Bruta (R$)',
+                            data: receita_otimista,
+                            backgroundColor: 'rgba(142, 226, 237, 0.8)',
+                            borderColor: 'rgba(142, 226, 237, 1)',
+                            borderWidth: 1
+                        },
+                        {
+                            label: 'Lucro Líquido (R$)',
+                            data: lucro_liquido_otimista,
+                            backgroundColor: 'rgba(255, 185, 63, 0.8)',
+                            borderColor: 'rgba(255, 185, 63, 1)',
+                            borderWidth: 1
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: {
+                                color: 'rgba(255, 255, 255, 0.7)',
+                                callback: function (value) {
+                                    if (value >= 1000000) {
+                                        return 'R$ ' + (value / 1000000).toFixed(1) + 'M';
+                                    } else if (value >= 1000) {
+                                        return 'R$ ' + (value / 1000) + 'k';
+                                    }
+                                    return 'R$ ' + value;
+                                }
+                            },
+                            grid: { color: 'rgba(255, 255, 255, 0.1)' }
+                        },
+                        x: {
+                            ticks: { color: 'rgba(255, 255, 255, 0.7)' },
+                            grid: { color: 'rgba(255, 255, 255, 0.1)' }
+                        }
+                    },
+                    plugins: {
+                        legend: { labels: { color: 'rgba(255, 255, 255, 0.8)' } },
+                        tooltip: {
+                            callbacks: {
+                                label: function (context) {
+                                    let label = context.dataset.label || '';
+                                    if (label) label += ': ';
+                                    if (context.parsed.y !== null) {
+                                        label += new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(context.parsed.y);
+                                    }
+                                    return label;
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+
+            // 3. CENÁRIO AGRESSIVO (10%)
+            // Dados com Preço Ajustado + Logística R$10 + Imposto Lucro Presumido
+            const receita_agressiva = [136785833.33, 201166875.0, 295732500.0];
+            const lucro_liquido_agressiva = [76020831.75, 111306293.06, 162857007.75];
+
+            const ctx_aggressive = document.getElementById('financialChart10PercentAggressive').getContext('2d');
+            new Chart(ctx_aggressive, {
+                type: 'bar',
+                data: {
+                    labels: ['Ano 1', 'Ano 2', 'Ano 3'],
+                    datasets: [
+                        {
+                            label: 'Receita Bruta (R$)',
+                            data: receita_agressiva,
+                            backgroundColor: 'rgba(142, 226, 237, 0.8)',
+                            borderColor: 'rgba(142, 226, 237, 1)',
+                            borderWidth: 1
+                        },
+                        {
+                            label: 'Lucro Líquido (R$)',
+                            data: lucro_liquido_agressiva,
+                            backgroundColor: 'rgba(255, 185, 63, 0.8)',
+                            borderColor: 'rgba(255, 185, 63, 1)',
+                            borderWidth: 1
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: {
+                                color: 'rgba(255, 255, 255, 0.7)',
+                                callback: function (value) {
+                                    if (value >= 1000000) {
+                                        return 'R$ ' + (value / 1000000).toFixed(1) + 'M';
+                                    } else if (value >= 1000) {
+                                        return 'R$ ' + (value / 1000) + 'k';
+                                    }
+                                    return 'R$ ' + value;
+                                }
+                            },
+                            grid: { color: 'rgba(255, 255, 255, 0.1)' }
+                        },
+                        x: {
+                            ticks: { color: 'rgba(255, 255, 255, 0.7)' },
+                            grid: { color: 'rgba(255, 255, 255, 0.1)' }
+                        }
+                    },
+                    plugins: {
+                        legend: { labels: { color: 'rgba(255, 255, 255, 0.8)' } },
+                        tooltip: {
+                            callbacks: {
+                                label: function (context) {
+                                    let label = context.dataset.label || '';
+                                    if (label) label += ': ';
+                                    if (context.parsed.y !== null) {
+                                        label += new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(context.parsed.y);
+                                    }
+                                    return label;
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+
         });
     </script>
 </body>
+
+</html>
+
 
 </html>
